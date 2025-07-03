@@ -1,0 +1,11 @@
+{
+  "name": "local-ai-packaged",
+  "version": "1.0.0",
+  "description": "**Self-hosted AI Package** is an open, docker compose template that\r quickly bootstraps a fully featured Local AI and Low Code development\r environment including Ollama for your local LLMs, Open WebUI for an interface to chat with your N8N agents, and Supabase for your database, vector store, and authentication.",
+  "scripts": {
+    "n8n": "start http://localhost:5678 || open http://localhost:5678 || xdg-open http://localhost:5678",
+    "start": "python start_services.py --profile gpu-nvidia",
+    "stop": "docker ps -q | xargs docker stop",
+    "webui": "start http://localhost:8080 || open http://localhost:8080 || xdg-open http://localhost:8080"
+  }
+}
