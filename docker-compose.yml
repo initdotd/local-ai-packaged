@@ -75,7 +75,7 @@ services:
     restart: unless-stopped
     container_name: open-webui
     expose:
-      - 8080/tcp
+      - 8081/tcp
     extra_hosts:
       - "host.docker.internal:host-gateway"
     volumes:
@@ -336,7 +336,7 @@ services:
     image: docker.io/searxng/searxng:latest
     restart: unless-stopped
     expose:
-      - 8080/tcp
+      - 8081/tcp
     volumes:
       - ./searxng:/etc/searxng:rw
     environment:
