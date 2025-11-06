@@ -6,6 +6,7 @@
     "n8n": "start http://localhost:5678 || open http://localhost:5678 || xdg-open http://localhost:5678",
     "start": "python start_services.py --profile gpu-nvidia",
     "stop": "docker ps -q | xargs docker stop",
+    "update": "docker compose pull",
     "webui": "start http://localhost:8080 || open http://localhost:8080 || xdg-open http://localhost:8080"
   }
 }
