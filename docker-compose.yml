@@ -28,6 +28,8 @@ x-n8n: &service-n8n
     - N8N_ENCRYPTION_KEY
     - N8N_USER_MANAGEMENT_JWT_SECRET
     - WEBHOOK_URL=${N8N_HOSTNAME:+https://}${N8N_HOSTNAME:-http://localhost:5678}
+    # Uncomment to enable LocalFileTrigger and ExecuteCommand nodes (disabled by default in n8n v2+)
+    # - NODES_EXCLUDE=[]
 
 x-ollama: &service-ollama
   image: ollama/ollama:latest
@@ -80,16 +82,6 @@ services:
       - "host.docker.internal:host-gateway"
     volumes:
       - open-webui:/app/backend/data
-
-  n8n-import:
-    <<: *service-n8n
-    container_name: n8n-import
-    entrypoint: /bin/sh
-    command:
-      - "-c"
-      - "n8n import:credentials --separate --input=/backup/credentials && n8n import:workflow --separate --input=/backup/workflows"
-    volumes:
-      - ./n8n/backup:/backup
 
   n8n:
     <<: *service-n8n
